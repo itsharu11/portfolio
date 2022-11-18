@@ -2,10 +2,13 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import React from 'react'
 import { SocialIcon } from 'react-social-icons';
+import { Social } from '../typings';
 
-type Props = {}
+type Props = {
+  socials: Social[];
+}
 
-export default function Header({}: Props) {
+export default function Header({ socials }: Props) {
   return (
     <header className='sticky top-0 p-5 flex items-start justify-between max-w-7xl mx-auto z-20 xl:items-center'>
         <motion.div initial={{
@@ -23,13 +26,17 @@ export default function Header({}: Props) {
         }}
         className='flex flex-row items-center'>
             {/* Social icons*/}
-            
-            <SocialIcon url="https://www.youtube.com/channel/UCFC-ectV3dB3SwHEeeJ5Vyg" 
-            fgColor='gray'
-            bgColor='transparent'/> 
+            {socials.map((social) => (
+              <SocialIcon 
+              key={social._id}
+              url={social.url}
+              fgColor='gray'
+              bgColor='transparent'/> 
+              
+            ))}
 
             
-            <SocialIcon url="https://www.linkedin.com/in/harsh-upadhyay-60741a121/" 
+            {/* <SocialIcon url="https://www.linkedin.com/in/harsh-upadhyay-60741a121/" 
             fgColor='gray'
             bgColor='transparent'/> 
 
@@ -41,7 +48,7 @@ export default function Header({}: Props) {
             
             <SocialIcon url="https://twitter.com/itsharu11_" 
             fgColor='gray'
-            bgColor='transparent'/> 
+            bgColor='transparent'/>  */}
 
             {/* <SocialIcon url="https://stackoverflow.com/users/20025644/haru" 
             fgColor='gray'

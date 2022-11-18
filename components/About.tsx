@@ -1,9 +1,14 @@
 import { motion } from 'framer-motion'
+import { url } from 'inspector'
 import React from 'react'
+import { urlFor } from '../sanity'
+import { PageInfo } from '../typings'
 
-type Props = {}
+type Props = {
+    pageInfo: PageInfo
+}
 
-export default function About({}: Props) {
+export default function About({pageInfo}: Props) {
   return (
     <motion.div 
         initial={{
@@ -22,7 +27,7 @@ export default function About({}: Props) {
         <h3 className='absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl'>About</h3>
         
     <motion.img 
-    src='about.jpg'
+    src={urlFor(pageInfo?.profilePic).url()}
     initial={{
         x: -200,
     }}
@@ -38,10 +43,7 @@ export default function About({}: Props) {
     <div className='space-y-10 px-0 md:px-10'>
         <h4 className='text-4xl font-semibold'>Here is a <span className='underline decorration-[#F7AB0A]/50'>little</span> background
         </h4>
-        <p className='text-base'>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse quam error quasi, a cum ab veniam totam, libero quos laborum consequuntur aperiam illo itaque fuga incidunt quidem est explicabo officiis.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum eligendi natus tempore non, recusandae consequatur sit amet aspernatur est accusantium, quasi nam iusto magni! Laboriosam veritatis commodi id nulla porro!
-        </p>
+        <p className='text-base'>{pageInfo?.backgroundInformation}</p>
     </div>
 
     </motion.div>

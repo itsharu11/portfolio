@@ -1,17 +1,26 @@
 import createSchema from 'part:@sanity/base/schema-creator'
 import schemaTypes from 'all:part:@sanity/base/schema-type'
+import client from 'part:@sanity/base/client'
 
-import blockContent from './blockContent'
-import category from './category'
-import pageinfo from './pageinfo'
-import author from './author'
+import experience from './experience'
+import skill from './skill'
+import social from './social'
+import project from './project'
+import pageInfo from './pageinfo'
+
+
+
 
 export default createSchema({
   
   name: 'default',
   types: schemaTypes.concat([
 
-    pageinfo,
+    skill,
+    pageInfo,
+    experience,
+    social,
+    project,
     
   ]),
 })

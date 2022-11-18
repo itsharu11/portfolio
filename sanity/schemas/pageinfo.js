@@ -16,7 +16,7 @@ export default {
     {
       name: 'heroImage',
       title: 'Image',
-      type: 'string',
+      type: 'image',
       options: {
         hotspot: true,
       },

@@ -1,10 +1,15 @@
+/* eslint-disable @next/next/no-img-element */
 import { motion } from 'framer-motion';
 import React from 'react'
+import { urlFor } from '../sanity';
+import { Project } from '../typings';
 
-type Props = {}
+type Props = {
+    projects: Project[];
+}
 
-function Projects({}: Props) {
-    const projects = [1,2,3,4];
+function Projects({projects}: Props) {
+   // const projects = [1,2,3,4];
   return (
     <div className='h-screen relative flex overflow-hidden flex-col text-left md:flex-row max-w-full justify-evenly mx-auto items-center z-0'>
         
@@ -12,7 +17,7 @@ function Projects({}: Props) {
 
         <div className='relative w-full flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-20 scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#F7AB0A]'>
             
-            {projects.map((project, i)=>(
+            {projects?.map((project, i)=>(
                 <>
                 <motion.div className='w-screen flex-shrink-0 snap-center flex flex-col space-y-5 items-center justify-center p-20 md:p-44 h-screen'>
                     <motion.img 
@@ -30,17 +35,28 @@ function Projects({}: Props) {
                     viewport={{ 
                         once: true
                     }}
-                    src="/js2.png" alt="" height={250} width={250}/>
+                    src={urlFor(project?.image).url()} alt="" height={250} width={250}/>
                     <div className='space-y-10 px-0 md:px-10 max-w-6xl'>
                         <h4 className='text-4xl font-semibold text-center'>
-                            <span className='underline decoration-[#F7AB0A]/50'>Case Study {i + 1} of {projects.length}</span> UPS Clone
+                            <span className='underline decoration-[#F7AB0A]/50'>
+                                Case Study {i + 1} of {projects.length} 
+                                </span>
+                                <label> </label> 
+                                {project?.title}
                         </h4>
 
+                        <div className='flex items-center space-x-2 justify-center'>
+                        {project?.technologies.map(technology => (
+                            <img className='h-10 w-10'
+                            key={technology._id}
+                            src={urlFor(technology.image).url()}
+                            alt=""
+                            />
+                        ))}
+                        </div>
+
                         <p className='text-lg text-center md:text-left'>
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
-                            Repudiandae suscipit quia explicabo dignissimos magni incidunt 
-                            maiores modi repellendus maxime assumenda, 
-                            animi a voluptate debitis nesciunt illum exercitationem tenetur! Enim, suscipit.
+                            {project?.summary}
                         </p>
 
                     </div>

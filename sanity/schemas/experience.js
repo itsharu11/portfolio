@@ -40,12 +40,13 @@ export default {
       name: 'technologies',
       title: 'Techonologies',
       type: 'array',
-      of: [{ type: 'refernce', to: {type: 'skill' }}],
+      of: [{ type: 'reference', to:{type: 'skill' }}],
     },
     {
       name: 'points',
       title: 'Points',
       type: 'array',
+      of:[{ type: 'string'}],
     },
   ],
 
